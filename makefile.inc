@@ -8,6 +8,12 @@ OSS_CAD_SUITE_FILENAME=oss-cad-suite-linux-x64-20240503
 
 #############################################################################
 
+LOWRISCV_WEB=https://github.com/lowRISC/lowrisc-toolchains/releases/download
+LOWRISCV_RELEASE_TAG=20240206-1
+LOWRISCV_FILENAME=lowrisc-toolchain-gcc-rv64imac-20240206-1
+
+#############################################################################
+
 uname:=$(shell uname)
 uname_m:=$(shell uname -m)
 
