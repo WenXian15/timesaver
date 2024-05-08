@@ -1,21 +1,31 @@
 
+uname:=$(shell uname)
+uname_m:=$(shell uname -m)
 
 #############################################################################
 
 OSS_CAD_WEB=https://github.com/YosysHQ/oss-cad-suite-build/releases/download
 RELEASE_TAG=2024-05-03
-OSS_CAD_SUITE_FILENAME=oss-cad-suite-linux-x64-20240503
+
+ifeq ($(uname_m),aarch64)
+	OSS_CAD_SUITE_FILENAME=oss-cad-suite-linux-arm64-20240503
+else 
+	OSS_CAD_SUITE_FILENAME=oss-cad-suite-linux-x64-20240503
+endif
+
 
 #############################################################################
 
 LOWRISCV_WEB=https://github.com/lowRISC/lowrisc-toolchains/releases/download
 LOWRISCV_RELEASE_TAG=20240206-1
+ifeq ($(uname),aarch64)
 LOWRISCV_FILENAME=lowrisc-toolchain-gcc-rv64imac-20240206-1
+else ifeq($(uname),x86_64)
+LOWRISCV_FILENAME=lowrisc-toolchain-gcc-rv64imac-20240206-1
+endif
 
 #############################################################################
 
-uname:=$(shell uname)
-uname_m:=$(shell uname -m)
 
 show_config:
 	@echo "ARCH=$(ARCH)"

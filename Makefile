@@ -29,6 +29,17 @@ get_fusesoc :
 	sudo pip3 cache purge
 	sudo pip3 install --upgrade --user fusesoc
 
+get_iverilog :
+	@echo "Installing iverilog"
+	@mkdir -p ./iverilog/bin
+	(cd ./iverilog; \
+	git checkout --track -b v12-branch origin/v12-branch; \
+	git pull; \
+	sh autoconf.sh; \
+	./configure $(PWD)/bin
+	make; \
+	make install)
+
 clean :
 	@echo "rm oss-cad-suite"
 	rm -rf oss-cad-suite
